@@ -1,44 +1,49 @@
-﻿using System;
+using System;
 using System.Net;
 using System.Text;
 
 //CLASE ABSTRACTA USER
 public abstract class User : Vaciable
 {
-    //DATOS
+    //ATRIBUTOS
 	private static int contadorId = 0;
 	private int id;
-	private string nombre;
+	private string? nombre;
 	private int edad;
-	private string email;
-	private string password;
+	private string? email;
+	private string? password;
 	private bool loginStatus;
-	private DateTime fechaSesion;
+    private bool isAdmin;
+    private DateTime fechaSesion;
+    
     
     //CONSTRUCTOR
-	public User(string pNombre, int pEdad, string pEmail, string pPassword)
+	public User(string nombre, int edad, string email, string password)
 	{
-		id = lastId();
-		nombre = pNombre;
-		edad = pEdad;
-		email = pEmail;
-		password = pPassword;
-		fechaSesion = DateTime.Now;
+		this.id = ++contadorId;
+        this.nombre = nombre;
+        this.edad = edad;
+		this.email = email;
+		this.password = password;
+		this.fechaSesion = DateTime.Now;
 	}
     //GETTERS
 	public int getId() { return id; }
-	public string getNombre() { return nombre; }
+	public string? getNombre() { return nombre; }
 	public int getEdad() { return edad; }
-	public string getEmail() { return email; }
+	public string? getEmail() { return email; }
+	public string? getPassword() { return password; }
+	public bool getLoginStatus() { return loginStatus; }
+    public bool getIsAdmin() { return isAdmin; }
 	public DateTime getFechaSesion() { return fechaSesion; }
-	public string getPassword() { return password; }
-	public bool isLoginStatus() { return loginStatus; }
     //SETTERS
 	public void setId(int id) { this.id = id; }
 	public void setNombre(string nombre) { this.nombre = nombre; }
 	public void setEdad(int edad) { this.edad = edad; }
 	public void setEmail(string email) { this.email = email; }
 	public void setPassword(string password) { this.password = password; }
+    public void setLoginStatus(bool loginStatus) { this.loginStatus = loginStatus; }
+    public void setIsAdmin(bool isAdmin) { this.isAdmin = isAdmin; }
     public void setDateTime(DateTime fechaSesion) { this.fechaSesion = fechaSesion; }
 
     //METODOS DE LA INTERFAZ VACIABLE
@@ -56,8 +61,7 @@ public abstract class User : Vaciable
     {
         return	(id == 0 && (nombre == null || nombre.Length == 0) && 
 				edad == 0 && (email == null || email.Length == 0) && 
-				(password == null || password.Length == 0) && 
-				loginStatus == false);
+				(password == null || password.Length == 0));
     }
 
     //ASIGNANDO COMPORTAMIENTO ANTE TOSTRING
@@ -75,6 +79,8 @@ public abstract class User : Vaciable
         sb.Append(password);
         sb.Append(" loginStatus=");
         sb.Append(loginStatus);
+        sb.Append(" isAdmin=");
+        sb.Append(isAdmin);
         sb.Append(" fechaSesion=");
         sb.Append(fechaSesion);
         return sb.ToString();
@@ -90,18 +96,14 @@ public abstract class User : Vaciable
                email == user.email &&
                password == user.password &&
                loginStatus == user.loginStatus &&
+               isAdmin == user.isAdmin &&
                fechaSesion == user.fechaSesion;
     }
 
     //HASHCODE
     public override int GetHashCode()
     {
-        return HashCode.Combine(id, nombre, edad, email, password, loginStatus, fechaSesion);
+        return HashCode.Combine(id, nombre, edad, email, password, loginStatus, isAdmin, fechaSesion);
     }
     //AUTOINCREMENTO DE LA ID (ACTUALMENTE HAY QUE MODIFICARLO PARA QUE SE CONECTE CON LA BD)
-    public int lastId()
-	{
-		contadorId++;
-		return contadorId;
-	}
 }
