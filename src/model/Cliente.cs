@@ -6,10 +6,9 @@ public class Cliente : User
 	//ATRIBUTOS
 	private List<Pedido> pedidos;
 	//CONSTRUCTOR
-	public Cliente(string nombre, int edad, string email, string password, Pedido pedido) : base(nombre, edad, email, password)
+	public Cliente(string nombre, int edad, string email, string password) : base(nombre, edad, email, password)
 	{
 		pedidos = new List<Pedido>();
-		pedidos.Add(pedido);
 		setIsAdmin(false);
 	}
 	//METODOS
@@ -31,14 +30,14 @@ public class Cliente : User
     }
 
     //TOSTRING
-    public override string ToString()
+    public override string toString()
     {
 		StringBuilder sb = new StringBuilder();
-		sb.Append(base.ToString());
-		sb.AppendLine("Lista de pedidos: ");
+		sb.Append(base.toString());
+		sb.AppendLine("\n\nLista de pedidos: ");
         foreach (Pedido pedido in pedidos)
         {
-			sb.AppendLine(pedido.ToString());
+			sb.AppendLine(pedido.toString());
         }
         return sb.ToString();
     }

@@ -11,8 +11,15 @@ public class Pedido : Vaciable
     private DateTime fechaEncargo;
 	private bool isCerrado;
 
-	//CONSTRUCTOR
-	public Pedido(Producto producto)
+    //CONSTRUCTOR
+    public Pedido()
+    {
+        this.id_pedido = ++contadorId;
+        this.productos = new List<Producto>();
+        fechaEncargo = DateTime.Now;
+        isCerrado = false;
+    }
+    public Pedido(Producto producto)
 	{
 		this.id_pedido = ++contadorId;
 		this.productos = new List<Producto>();
@@ -64,18 +71,18 @@ public class Pedido : Vaciable
     }
 
     //TOSTRING
-	public override string ToString()
+	public string toString()
 	{
 		StringBuilder sb = new StringBuilder();
         sb.Append("id_pedido=");
         sb.Append(id_pedido);
-        sb.Append(" fechaEncargo=");
+        sb.Append("\nfechaEncargo=");
         sb.Append(fechaEncargo);
-        sb.Append(" isCerrado=");
+        sb.Append("\nisCerrado=");
         sb.Append(isCerrado);
-        sb.AppendLine("Lista de productos: ");
+        sb.AppendLine("\n\nLista de productos: ");
         foreach (Producto producto in productos)
-            sb.AppendLine(producto.ToString());
+            sb.AppendLine(producto.toString());
         return sb.ToString();
 	}
 

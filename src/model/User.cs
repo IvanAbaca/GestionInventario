@@ -65,23 +65,23 @@ public abstract class User : Vaciable
     }
 
     //ASIGNANDO COMPORTAMIENTO ANTE TOSTRING
-    public string toString()
+    public virtual string toString()
     {
         StringBuilder sb = new StringBuilder("id=");
         sb.Append(id);
-        sb.Append(" nombre=");
+        sb.Append("\nnombre=");
         sb.Append(nombre);
-		sb.Append(" edad=");
+		sb.Append("\nedad=");
 		sb.Append(edad);
-        sb.Append(" email=");
+        sb.Append("\nemail=");
         sb.Append(email);
-        sb.Append(" password=");
+        sb.Append("\npassword=");
         sb.Append(password);
-        sb.Append(" loginStatus=");
+        sb.Append("\nloginStatus=");
         sb.Append(loginStatus);
-        sb.Append(" isAdmin=");
+        sb.Append("\nisAdmin=");
         sb.Append(isAdmin);
-        sb.Append(" fechaSesion=");
+        sb.Append("\nfechaSesion=");
         sb.Append(fechaSesion);
         return sb.ToString();
     }

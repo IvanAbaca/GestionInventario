@@ -76,13 +76,13 @@ public class Producto : Vaciable
         StringBuilder sb = new StringBuilder();
         sb.Append("id=");
         sb.Append(id);
-        sb.Append(" nombre=");
+        sb.Append("\nnombre=");
         sb.Append(nombre);
-        sb.Append(" precio=");
+        sb.Append("\nprecio=");
         sb.Append(precio);
-        sb.Append(" cantidad=");
+        sb.Append("\ncantidad=");
         sb.Append(cantidad);
-        sb.Append(" categoria=");
+        sb.Append("\ncategoria=");
         sb.Append(categoria);
         return sb.ToString();
     }
