@@ -11,10 +11,17 @@ public class Producto : Vaciable
     private int cantidad;
     private string? categoria;
 
+    public Producto()
+    {
+        ProductoDAO prodDAO = new ProductoDAO();
+        this.id = prodDAO.lastId();
+    }
+
     //CONSTRUCTOR
     public Producto(string nombre, float precio, int cantidad, string categoria)
 	{
-		this.id = ++contadorId;
+        ProductoDAO prodDAO = new ProductoDAO();
+		this.id = prodDAO.lastId();
 		this.nombre = nombre;
 		this.precio = precio;
 		this.cantidad = cantidad;

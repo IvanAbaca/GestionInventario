@@ -42,6 +42,8 @@
             getPedidos = new Button();
             button1 = new Button();
             DatosPedidos = new Label();
+            button2 = new Button();
+            button3 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -165,11 +167,33 @@
             DatosPedidos.Size = new Size(300, 400);
             DatosPedidos.TabIndex = 12;
             // 
+            // button2
+            // 
+            button2.Location = new Point(341, 389);
+            button2.Name = "button2";
+            button2.Size = new Size(93, 23);
+            button2.TabIndex = 15;
+            button2.Text = "Crear-Mostrar producto";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(341, 418);
+            button3.Name = "button3";
+            button3.Size = new Size(93, 23);
+            button3.TabIndex = 16;
+            button3.Text = "Desconectar";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1217, 841);
+            Controls.Add(button3);
+            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(getPedidos);
             Controls.Add(DatosPedidos);
@@ -207,5 +231,7 @@
         private Button getPedidos;
         private Button button1;
         private Label DatosPedidos;
+        private Button button2;
+        private Button button3;
     }
 }
