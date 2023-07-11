@@ -4,17 +4,23 @@ using System.Text;
 public class Producto : Vaciable
 {
     //ATRIBUTOS
-    private static int contadorId = 0;
     private int id;
     private string? nombre;
     private float precio;
     private int cantidad;
     private string? categoria;
 
+    public Producto()
+    {
+        ProductoDAO prodDAO = new ProductoDAO();
+        this.id = prodDAO.lastId();
+    }
+
     //CONSTRUCTOR
     public Producto(string nombre, float precio, int cantidad, string categoria)
 	{
-		this.id = ++contadorId;
+        ProductoDAO prodDAO = new ProductoDAO();
+		this.id = prodDAO.lastId();
 		this.nombre = nombre;
 		this.precio = precio;
 		this.cantidad = cantidad;
@@ -86,8 +92,4 @@ public class Producto : Vaciable
         sb.Append(categoria);
         return sb.ToString();
     }
-
-    //AUTOINCREMENTO
-
-
 }
