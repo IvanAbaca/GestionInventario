@@ -4,7 +4,6 @@ using System.Text;
 public class Producto : Vaciable
 {
     //ATRIBUTOS
-    private static int contadorId = 0;
     private int id;
     private string? nombre;
     private float precio;
@@ -93,8 +92,4 @@ public class Producto : Vaciable
         sb.Append(categoria);
         return sb.ToString();
     }
-
-    //AUTOINCREMENTO
-
-
 }

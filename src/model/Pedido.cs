@@ -14,21 +14,22 @@ public class Pedido : Vaciable
     //CONSTRUCTOR
     public Pedido()
     {
-        this.id_pedido = ++contadorId;
-        this.productos = new List<Producto>();
+        id_pedido = ++contadorId;
+        productos = new List<Producto>();
         fechaEncargo = DateTime.Now;
         isCerrado = false;
     }
     public Pedido(Producto producto)
 	{
-		this.id_pedido = ++contadorId;
-		this.productos = new List<Producto>();
-		this.productos.Add(producto);
+		id_pedido = ++contadorId;
+		productos = new List<Producto>();
+		productos.Add(producto);
 		fechaEncargo = DateTime.Now;
 		isCerrado = false;
 	}
 	//METODOS
 	public void addProducto(Producto producto) { productos.Add(producto); }
+    public void cerrarPedido(Pedido pedido) { pedido.setIsCerrado(true); }
 
 	//GETTERS
 	public int getIdPedido() { return id_pedido; }
@@ -45,8 +46,8 @@ public class Pedido : Vaciable
     //VACIABLE
     public void vaciar()
 	{
-		this.id_pedido = 0;
-		this.productos.Clear();
+		id_pedido = 0;
+		productos.Clear();
 	}
 
 	public bool isVacio()
