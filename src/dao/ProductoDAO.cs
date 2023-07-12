@@ -5,7 +5,6 @@ using System.Text;
 
 public class ProductoDAO : DAO<Producto>
 {
-
     public int lastId()
     {
         //Lógica para leer el dato de la base de datos
@@ -32,7 +31,7 @@ public class ProductoDAO : DAO<Producto>
         ConnectionManager con = new ConnectionManager();
         SqlConnection connection = con.GetConnection();
         // Código para agregar el dato en la base de datos
-        string sql = "insert into productos (prod_id, prod_nombre, prod_precio, prod_cantidad, prod_categoria) values(" + prod.getId() + "," + "'" + prod.getNombre() + "'" + "," + prod.getPrecio() + "," + prod.getCantidad() + "," + "'" + prod.getCategoria() + "')";
+        string sql = "insert into productos (prod_id, prod_nombre, prod_precio, prod_cantidad, prod_categoria) values(" + prod.Id + "," + "'" + prod.Nombre + "'" + "," + prod.Precio + "," + prod.Cantidad + "," + "'" + prod.Categoria + "')";
         using (SqlCommand command = new SqlCommand(sql, connection))
         {
             command.ExecuteNonQuery();
@@ -44,7 +43,7 @@ public class ProductoDAO : DAO<Producto>
         // Lógica para eliminar el dato de la base de datos
         ConnectionManager con = new ConnectionManager();
         SqlConnection connection = con.GetConnection();
-        string sql = "delete from productos where prod_id=" + prod.getId();
+        string sql = "delete from productos where prod_id=" + prod.Id;
         using (SqlCommand command = new SqlCommand(sql, connection))
         {
             command.ExecuteNonQuery();
@@ -56,7 +55,7 @@ public class ProductoDAO : DAO<Producto>
         ConnectionManager con = new ConnectionManager();
         SqlConnection connection = con.GetConnection();
         // Código para modificar el dato en la base de datos
-        string sql = "UPDATE productos SET prod_nombre = '" + prod.getNombre() + "', prod_precio = " + prod.getPrecio() + ", prod_cantidad = " + prod.getCantidad() + ", prod_categoria = '" + prod.getCategoria() + "' WHERE prod_id = " + prod.getId();
+        string sql = "UPDATE productos SET prod_nombre = '" + prod.Nombre + "', prod_precio = " + prod.Precio + ", prod_cantidad = " + prod.Cantidad + ", prod_categoria = '" + prod.Categoria + "' WHERE prod_id = " + prod.Id;
         using (SqlCommand command = new SqlCommand(sql, connection))
         {
             command.ExecuteNonQuery();
@@ -78,11 +77,11 @@ public class ProductoDAO : DAO<Producto>
             {
                 if (reader.Read())
                 {
-                    prod.setId(reader.GetInt32(0));
-                    prod.setNombre(reader.GetString(1));
-                    prod.setPrecio((float)reader.GetDouble(2));
-                    prod.setCantidad(reader.GetInt32(3));
-                    prod.setCategoria(reader.GetString(4));
+                    prod.Id = (reader.GetInt32(0));
+                    prod.Nombre = (reader.GetString(1));
+                    prod.Precio = ((float)reader.GetDecimal(2));
+                    prod.Cantidad = (reader.GetInt32(3));
+                    prod.Categoria = (reader.GetString(4));
                 }
             }
         }
@@ -104,11 +103,11 @@ public class ProductoDAO : DAO<Producto>
                     while (reader.Read())
                     {
                         Producto prod = new Producto();
-                        prod.setId(reader.GetInt32(0));
-                        prod.setNombre(reader.GetString(1));
-                        prod.setPrecio((float)reader.GetDouble(2));
-                        prod.setCantidad(reader.GetInt32(3));
-                        prod.setCategoria(reader.GetString(4));
+                        prod.Id = (reader.GetInt32(0));
+                        prod.Nombre = (reader.GetString(1));
+                        prod.Precio = ((float)reader.GetDecimal(2));
+                        prod.Cantidad = (reader.GetInt32(3));
+                        prod.Categoria = (reader.GetString(4));
                         productos.Add(prod);
                     }
                 }

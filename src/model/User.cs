@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Net;
 using System.Text;
@@ -6,54 +7,57 @@ using System.Text;
 public abstract class User : Vaciable
 {
     //ATRIBUTOS
-	private static int contadorId = 0;
 	private int id;
-	private string? nombre;
+	private string nombre;
 	private int edad;
-	private string? email;
-	private string? password;
+	private string email;
+	private string password;
 	private bool loginStatus;
     private bool isAdmin;
     private DateTime fechaSesion;
-    
-    
+
+
     //CONSTRUCTOR
-	public User(string nombre, int edad, string email, string password)
+    public User()
+    {
+        AdminDAO user = new AdminDAO();
+        id = user.lastId();
+        nombre = "";
+        edad = 0;
+        email = "";
+        password = "";
+        loginStatus = false;
+    }
+    public User(string nombre, int edad, string email, string password)
 	{
-		this.id = ++contadorId;
+        AdminDAO user = new AdminDAO();
+        this.id = user.lastId();
         this.nombre = nombre;
         this.edad = edad;
 		this.email = email;
 		this.password = password;
 		this.fechaSesion = DateTime.Now;
+        loginStatus = false;
 	}
-    //GETTERS
-	public int getId() { return id; }
-	public string? getNombre() { return nombre; }
-	public int getEdad() { return edad; }
-	public string? getEmail() { return email; }
-	public string? getPassword() { return password; }
-	public bool getLoginStatus() { return loginStatus; }
-    public bool getIsAdmin() { return isAdmin; }
-	public DateTime getFechaSesion() { return fechaSesion; }
-    //SETTERS
-	public void setId(int id) { this.id = id; }
-	public void setNombre(string nombre) { this.nombre = nombre; }
-	public void setEdad(int edad) { this.edad = edad; }
-	public void setEmail(string email) { this.email = email; }
-	public void setPassword(string password) { this.password = password; }
-    public void setLoginStatus(bool loginStatus) { this.loginStatus = loginStatus; }
-    public void setIsAdmin(bool isAdmin) { this.isAdmin = isAdmin; }
-    public void setDateTime(DateTime fechaSesion) { this.fechaSesion = fechaSesion; }
+    //GETTERS Y SETTERS
+
+    public int Id { get { return id; } set { id = value; } }
+    public string Nombre { get { return nombre; } set { nombre = value; } }
+    public int Edad { get { return edad; } set { edad = value; } }
+    public string Email { get { return email; } set { email = value; } }
+    public string Password { get { return password; } set { password = value; } }
+    public bool LoginStatus { get { return loginStatus; } set { loginStatus = value; } }
+    public bool IsAdmin { get { return isAdmin; } set { isAdmin = value; } }
+    public DateTime FechaSesion{ get { return fechaSesion; } set { fechaSesion = value; } }
 
     //METODOS DE LA INTERFAZ VACIABLE
     public virtual void vaciar()
     {
         id = 0;
-        nombre = null;
+        nombre = "";
 		edad = 0;
-        email = null;
-        password = null;
+        email = "";
+        password = "";
 		loginStatus = false;
     }
 

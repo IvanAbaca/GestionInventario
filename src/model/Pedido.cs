@@ -29,19 +29,13 @@ public class Pedido : Vaciable
 	}
 	//METODOS
 	public void addProducto(Producto producto) { productos.Add(producto); }
-    public void cerrarPedido(Pedido pedido) { pedido.setIsCerrado(true); }
+    public void cerrarPedido(Pedido pedido) { pedido.IsCerrado = true; }
 
-	//GETTERS
-	public int getIdPedido() { return id_pedido; }
-	public List<Producto> getProductos() { return productos; }
-	public DateTime getFechaEncargo() { return fechaEncargo; }
-	public bool getIsCerrado() { return isCerrado; }
-
-	//SETTERS
-	public void setIdPedido(int id_pedido) { this.id_pedido = id_pedido; }
-    public void setProductos(List<Producto> productos) { this.productos = productos; }
-    public void setFechaEncargo(DateTime fechaEncargo) { this.fechaEncargo = fechaEncargo; }
-	public void setIsCerrado(bool isCerrado) { this.isCerrado = isCerrado; }
+    //GETTERS Y SETTERS
+    public int IdPedido { get { return id_pedido; } set{ id_pedido = value;} }
+	public List<Producto> Productos { get { return productos; } set { productos = value; } }
+	public DateTime FechaEncargo { get { return fechaEncargo; } set { fechaEncargo = value; } }
+	public bool IsCerrado { get { return isCerrado; } set { isCerrado = value; } }
 
     //VACIABLE
     public void vaciar()
