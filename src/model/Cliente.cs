@@ -9,14 +9,12 @@ public class Cliente : User
 	public Cliente(string nombre, int edad, string email, string password) : base(nombre, edad, email, password)
 	{
 		pedidos = new List<Pedido>();
-		setIsAdmin(false);
+		IsAdmin = false;
 	}
 	//METODOS
 	public void addPedido(Pedido pedido) { this.pedidos.Add(pedido); }
-	//GETTERS
-	public List<Pedido> getPedidos() { return this.pedidos; }
-	//SETTERS
-	public void setPedidos(List<Pedido> pedidos) { this.pedidos = pedidos; }
+    //GETTERS Y SETTERS
+    public List<Pedido> Pedidos { get { return pedidos; } set { pedidos = value; } }
 	//VACIABLE
 	public override void vaciar()
 	{

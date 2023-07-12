@@ -5,15 +5,19 @@ public class Producto : Vaciable
 {
     //ATRIBUTOS
     private int id;
-    private string? nombre;
+    private string nombre;
     private float precio;
     private int cantidad;
-    private string? categoria;
+    private string categoria;
 
     public Producto()
     {
         ProductoDAO prodDAO = new ProductoDAO();
         this.id = prodDAO.lastId();
+        nombre = "";
+        precio = 0;
+        cantidad = 0;
+        categoria = "";
     }
 
     //CONSTRUCTOR
@@ -28,28 +32,20 @@ public class Producto : Vaciable
 	}
     //METODOS
 
-    //GETTERS
-	public int getId()              { return id; }
-	public string? getNombre()       { return nombre; }
-	public float getPrecio()        { return precio; }
-	public int getCantidad()        { return cantidad; }
-	public string? getCategoria()    { return categoria; }
-
-    //SETTERS
-	public void setId(int id)                   { this.id = id; }
-    public void setNombre(string nombre)        { this.nombre = nombre; }
-    public void setPrecio(float precio)         { this.precio = precio; }
-    public void setCantidad(int cantidad)       { this.cantidad = cantidad; }
-    public void setCategoria(string categoria)  { this.categoria = categoria; }
-
+    //GETTERS Y SETTERS
+    public int Id { get { return id; } set { id = value; } }
+    public string Nombre { get { return nombre; } set { nombre = value; } }
+    public float Precio { get { return precio; } set { precio = value; } }
+    public int Cantidad { get { return cantidad; } set { cantidad = value; } }
+    public string Categoria { get { return categoria; } set { categoria = value; } }
     //VACIABLE
     public virtual void vaciar()
     {
         id = 0;
-        nombre = null;
+        nombre = "";
         precio = 0;
         cantidad = 0;
-        categoria = null;
+        categoria = "";
     }
 
     public virtual bool isVacio()
